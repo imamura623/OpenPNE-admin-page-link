@@ -2,10 +2,10 @@
 // @name           OpenPNE admin page link
 // @namespace      openpne_admin_link
 // @description    OpenPNE Link to admin page
-// @include        http://*/*
+// @include        *
 // ==/UserScript==
 
-var VERSION = '2010.05.27';
+var VERSION = '2010.11.17';
 
 var GM_infoPanel = document.createElement('div');
 (function () {
@@ -31,10 +31,11 @@ var GM_infoPanel = document.createElement('div');
 
     if (opsite == "page_member_login")
     {
-    //OpenPNEのベースURL取得？
+    //OpenPNEのベースURL取得
+        var protocol = location.protocol;
         var base = location.hostname;
 
-        //URL生成部
-        GM_infoPanel.innerHTML = '<a href="http://'+base+'/pc_backend.php/" target="_blank">管理画面へ</a>';
+        //URL生成部(To pc_backend & mobile_frontend)
+        GM_infoPanel.innerHTML = '<a href="'+protocol+'//'+base+'/pc_backend.php/" target="_blank">管理画面へ</a><br><br><a href="http://'+base+'/mobile_frontend.php/" target="_blank">携帯画面へ</a>';
         document.body.appendChild(GM_infoPanel);
     }
